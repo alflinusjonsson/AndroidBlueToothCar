@@ -2,8 +2,9 @@ package se.j.androidprojekt;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
     RadarView mRadarView = null;
@@ -19,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SettingsButtonClicked(View view){
-        //Intent intent = new Intent(this, SettingsActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 }
