@@ -5,4 +5,5 @@
     <string name = "turn_off">Stäng av</string>
     <string name = "turn_on">Sätt på</string>
     <string name = "paired_devices">Parade enheter</string>
+    <string name = "button1">Bluetooth Inställningar</string>
 </resources>

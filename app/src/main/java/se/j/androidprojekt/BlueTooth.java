@@ -23,18 +23,17 @@ public class BlueTooth extends AppCompatActivity {
     Button b1,b2,b3;
     ListView lv;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bluetooth);
 
-        b1 = (Button) findViewById(R.id.button);
-        b2 = (Button)findViewById(R.id.button2);
-        b3 = (Button)findViewById(R.id.button3);
+        b1 = findViewById(R.id.button);
+        b2 = findViewById(R.id.button2);
+        b3 = findViewById(R.id.button3);
 
         Bluetooth = BluetoothAdapter.getDefaultAdapter();
-        lv = (ListView)findViewById(R.id.listView);
+        lv = findViewById(R.id.listView);
 
     }
 
