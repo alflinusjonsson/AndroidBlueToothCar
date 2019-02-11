@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">AndroidProjekt</string>
-    <string name="list_devices">"List devices</string>
     <string name="get_visible">Get visible</string>
     <string name="turn_off">Turn off</string>
     <string name="turn_on">Turn on</string>
