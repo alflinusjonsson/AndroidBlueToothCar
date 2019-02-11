@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidProjekt</string>
+    <string name="list_devices">Lista enheter</string>
+    <string name ="get_visible">Gör synlig</string>
+    <string name = "turn_off">Stäng av</string>
+    <string name = "turn_on">Sätt på</string>
+    <string name = "paired_devices">Parade enheter</string>
+    <string name = "button1">Bluetooth Inställningar</string>
+</resources>
