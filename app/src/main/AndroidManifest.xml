@@ -19,6 +19,15 @@
         </intent-filter>
     </activity>
 
+        <activity android:name=".BlueTooth">
+
+        </activity>
+
+        <activity android:name=".Settings">
+
+        </activity>
+
+
     </application>
 
 </manifest>
