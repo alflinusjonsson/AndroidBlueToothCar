@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/darker_gray">
+
+    <se.j.androidprojekt.RadarView
+        android:id="@+id/radarView"
+        android:layout_marginTop="10dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/holo_green_dark"/>
+    <Button
+        android:layout_width="240dp"
+        android:layout_height="200dp"
+        android:id="@+id/Image_settings"
+        android:background="@drawable/settingsbutton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:text="Settings"
+        android:textColor="@color/SettingsColor"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium"
+        android:onClick="SettingsButtonClicked"
+
+        />
 
 </LinearLayout>
