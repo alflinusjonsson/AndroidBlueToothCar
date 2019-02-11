@@ -20,7 +20,7 @@ public class BlueTooth extends AppCompatActivity {
     private BluetoothAdapter Bluetooth;
     private Set<BluetoothDevice> pairedDevices;
 
-    Button b1,b2,b3,b4;
+    Button b1,b2,b3;
     ListView lv;
 
 
@@ -32,7 +32,6 @@ public class BlueTooth extends AppCompatActivity {
         b1 = (Button) findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.button2);
         b3 = (Button)findViewById(R.id.button3);
-        b4 = (Button)findViewById(R.id.button4);
 
         Bluetooth = BluetoothAdapter.getDefaultAdapter();
         lv = (ListView)findViewById(R.id.listView);
@@ -54,7 +53,7 @@ public class BlueTooth extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Turned off" ,Toast.LENGTH_LONG).show();
     }
 
-    public  void visible(View v){
+    public void visible(View v){
         Intent getVisible = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
         startActivityForResult(getVisible, 0);
     }
