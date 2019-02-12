@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center"
@@ -6,27 +7,70 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/darker_gray">
-
     <se.j.androidprojekt.RadarView
         android:id="@+id/radarView"
+
         android:layout_marginTop="10dp"
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:layout_gravity="center_horizontal"
-        android:background="@android:color/holo_green_dark"/>
+        android:background="@drawable/circle"
+        />
     <Button
         android:layout_width="240dp"
-        android:layout_height="200dp"
+        android:layout_height="80dp"
         android:id="@+id/Image_settings"
         android:background="@drawable/settingsbutton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="100dp"
         android:text="Settings"
         android:textColor="@color/SettingsColor"
         android:textSize="25dp"
         android:fontFamily="sans-serif-medium"
         android:onClick="SettingsButtonClicked"
+        />
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:rotation="90"
+        android:id="@+id/Arrow_top"
+        android:background="@drawable/arrow"
+        android:onClick="ArrowUpPressed"
+        />
 
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="-80dp"
+        android:id="@+id/Arrow_left"
+        android:background="@drawable/arrow"
+        android:onClick="ArrowLeftPressed"
+        />
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="-70dp"
+        android:layout_gravity="center_horizontal"
+        android:rotation="180"
+        android:layout_marginLeft="77dp"
+        android:id="@+id/Arrow_right"
+        android:background="@drawable/arrow"
+        android:onClick="ArrowRightPressed"
+        />
+    <ImageButton
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="center_horizontal"
+        android:rotation="270"
+        android:layout_marginLeft="0dp"
+        android:id="@+id/Arrow_down"
+        android:background="@drawable/arrow"
+        android:onClick="ArrowDownPressed"
         />
 
 </LinearLayout>
