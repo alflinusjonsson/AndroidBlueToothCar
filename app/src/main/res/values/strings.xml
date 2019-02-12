@@ -5,4 +5,8 @@
     <string name="turn_on">Turn on</string>
     <string name="paired_devices">Paired devices</string>
     <string name="button1">BlueTooth Settings</string>
+    <string name="discover">Discover</string>
+    <string name="on_off">ON/OFF</string>
+    <string name="enable_discoverable">Enable Discoverable</string>
+    <string name="start_connection">Start Connection</string>
 </resources>
