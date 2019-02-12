@@ -18,11 +18,11 @@
         />
     <Button
         android:layout_width="240dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:id="@+id/Image_settings"
         android:background="@drawable/settingsbutton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:text="Settings"
         android:textColor="@color/SettingsColor"
         android:textSize="25dp"
@@ -73,4 +73,39 @@
         android:onClick="ArrowDownPressed"
         />
 
+    <TextView
+        android:id="@+id/speed"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-440dp"
+        android:background="@drawable/speedanddistancecircle"
+        android:gravity="center"
+        android:textColor="@color/SettingsColor"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium" />
+
+
+    <TextView
+        android:id="@+id/disFront"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/speedanddistancecircle"
+        android:gravity="center"
+        android:textColor="@color/SettingsColor"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium"/>
+    <TextView
+        android:id="@+id/disBack"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginLeft="290dp"
+        android:background="@drawable/speedanddistancecircle"
+        android:gravity="center"
+        android:textColor="@color/SettingsColor"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-medium"/>
 </LinearLayout>
