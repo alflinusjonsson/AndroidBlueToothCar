@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             distanceDot.setY(-380);
         else
             distanceDot.setBackgroundColor(6334512);
+
     }
 
     public void printDisDotFront(int distance){
