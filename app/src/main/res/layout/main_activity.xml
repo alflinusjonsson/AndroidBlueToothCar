@@ -9,7 +9,6 @@
     android:background="@android:color/darker_gray">
     <se.j.androidprojekt.RadarView
         android:id="@+id/radarView"
-
         android:layout_marginTop="10dp"
         android:layout_width="240dp"
         android:layout_height="240dp"
@@ -108,4 +107,20 @@
         android:textColor="@color/SettingsColor"
         android:textSize="25dp"
         android:fontFamily="sans-serif-medium"/>
+
+    <TextView
+        android:id="@+id/disDotFront"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@drawable/distancedot"
+
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/disDotBack"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:background="@drawable/distancedot"
+
+        android:layout_gravity="center_horizontal"/>
+
 </LinearLayout>
