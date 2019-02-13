@@ -1,5 +1,6 @@
 package se.j.androidprojekt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,11 +8,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import app.akexorcist.bluetotohspp.library.BluetoothSPP;
+
 public class MainActivity extends AppCompatActivity {
     RadarView mRadarView = null;
     int speedOutput = 50;
     int distanceFront = 20;
     int distanceBack = 20;
+
+    final String stop = "0";
+    final String forward = "1";
+    final String left = "3";
+    final String right = "4";
+    final String back = "2";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRadarView.setShowCircles(true);
         if (mRadarView != null) mRadarView.startAnimation();
+
     }
 
     public void SettingsButtonClicked(View view){
@@ -46,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //Run motor forward
+                        //bt.bluetooth.send(forward,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //Stop motor
+                        //bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;
@@ -63,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //Run motor left
+                        //bt.bluetooth.send(left,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //Stop motor
+                        //bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;
@@ -80,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //Run motor right
+                        //bt.bluetooth.send(right,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //Stop motor
+                        //bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;
@@ -97,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //Run motor backwards
+                        //bt.bluetooth.send(back,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //Stop motor
+                        //bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;

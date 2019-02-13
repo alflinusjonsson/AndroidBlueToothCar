@@ -18,7 +18,7 @@ public class BlueTooth extends AppCompatActivity {
     BluetoothSPP bluetooth;
     Button connect;
 
-    final String forward = "1";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,10 @@ public class BlueTooth extends AppCompatActivity {
                 connect.setText("Connected to " + name);
 
                 soundeffect.start();
-                bluetooth.send(forward,true);
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
             }
 
             public void onDeviceDisconnected() {
