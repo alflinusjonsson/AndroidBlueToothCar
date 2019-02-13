@@ -275,5 +275,4 @@ public class BlueTooth extends AppCompatActivity {
         }
     }
 
-
 }
