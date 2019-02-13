@@ -18,7 +18,7 @@ public class BlueTooth extends AppCompatActivity {
     BluetoothSPP bluetooth;
     Button connect;
 
-    final MediaPlayer soundeffect = MediaPlayer.create(this, R.raw.bluetoothsound);
+    final String forward = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,8 @@ public class BlueTooth extends AppCompatActivity {
 
         connect = (Button) findViewById(R.id.connect);
 
+        final MediaPlayer soundeffect = MediaPlayer.create(this, R.raw.bluetoothsound);
+
 
         if (!bluetooth.isBluetoothAvailable()) {
             Toast.makeText(getApplicationContext(), "Bluetooth is not available", Toast.LENGTH_SHORT).show();
@@ -38,7 +40,9 @@ public class BlueTooth extends AppCompatActivity {
         bluetooth.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() {
             public void onDeviceConnected(String name, String address) {
                 connect.setText("Connected to " + name);
+
                 soundeffect.start();
+                bluetooth.send(forward,true);
             }
 
             public void onDeviceDisconnected() {
