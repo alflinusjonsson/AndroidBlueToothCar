@@ -24,7 +24,7 @@ public class BlueTooth extends AppCompatActivity {
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
 
-    BlueToothConnectionSerivce mBluetoothConnection;
+    BluetoothConnectionService mBluetoothConnection;
 
     Button btnStartConnection;
 
@@ -271,7 +271,7 @@ public class BlueTooth extends AppCompatActivity {
             mBTDevices.get(i).createBond();
 
             mBTDevice = mBTDevices.get(i);
-            mBluetoothConnection = new BlueToothConnectionSerivce(BlueTooth.this);
+            mBluetoothConnection = new BluetoothConnectionService(BlueTooth.this);
         }
     }
 
