@@ -6,8 +6,4 @@
     <string name = "turn_on">Sätt på</string>
     <string name = "paired_devices">Parade enheter</string>
     <string name = "button1">Bluetooth Inställningar</string>
-    <string name="discover">Hitta enheter</string>
-    <string name="on_off">AV/PÅ</string>
-    <string name="enable_discoverable">Gör tillgänglig</string>
-    <string name="start_connection">Anslut</string>
 </resources>
