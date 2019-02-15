@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     int speedOutput = 50;
     int distanceFront = 20;
     int distanceBack = 20;
-
+    BlueTooth bt;
     final String stop = "0";
     final String forward = "1";
     final String left = "3";
@@ -56,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //bt.bluetooth.send(forward,true);
+
+                        bt.bluetooth.send(forward,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.bluetooth.send(stop,true);
+                        bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;
@@ -73,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //bt.bluetooth.send(left,true);
+                        bt.bluetooth.send(left,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.bluetooth.send(stop,true);
+                        bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;
@@ -90,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //bt.bluetooth.send(right,true);
+                        bt.bluetooth.send(right,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.bluetooth.send(stop,true);
+                        bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;
@@ -107,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //bt.bluetooth.send(back,true);
+                        bt.bluetooth.send(back,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.bluetooth.send(stop,true);
+                        bt.bluetooth.send(stop,true);
                         break;
                 }
                 return false;

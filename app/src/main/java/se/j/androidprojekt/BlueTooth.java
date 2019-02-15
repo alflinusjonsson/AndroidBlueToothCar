@@ -18,16 +18,16 @@ public class BlueTooth extends AppCompatActivity {
     BluetoothSPP bluetooth;
     Button connect;
 
-    final String forward = "1";
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bluetooth);
 
         bluetooth = new BluetoothSPP(this);
 
-        connect = (Button) findViewById(R.id.connect);
+        connect = findViewById(R.id.connect);
 
         final MediaPlayer soundeffect = MediaPlayer.create(this, R.raw.bluetoothsound);
 
@@ -42,7 +42,8 @@ public class BlueTooth extends AppCompatActivity {
                 connect.setText("Connected to " + name);
 
                 soundeffect.start();
-                bluetooth.send(forward,true);
+                Intent intent = new Intent(BlueTooth.this, MainActivity.class);
+                startActivity(intent);
             }
 
             public void onDeviceDisconnected() {
