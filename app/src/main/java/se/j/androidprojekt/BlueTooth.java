@@ -9,29 +9,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.Serializable;
+
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
 import app.akexorcist.bluetotohspp.library.DeviceList;
 
-public class BlueTooth extends AppCompatActivity {
+public class BlueTooth extends AppCompatActivity implements Serializable {
 
-    BluetoothSPP bluetooth;
+    BluetoothSPP bluetooth  = new BluetoothSPP(this);
     Button connect;
-
-
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bluetooth);
 
-        bluetooth = new BluetoothSPP(this);
+        //bluetooth = new BluetoothSPP(this);
 
         connect = findViewById(R.id.connect);
 
         final MediaPlayer soundeffect = MediaPlayer.create(this, R.raw.bluetoothsound);
-
-
+        Intent intent = getIntent();
+        int direction = intent.getIntExtra("DIRECTION", 0);
+        if(bluetooth.isBluetoothEnabled() && direction == 1)
+            bluetooth.send("1", true);
         if (!bluetooth.isBluetoothAvailable()) {
             Toast.makeText(getApplicationContext(), "Bluetooth is not available", Toast.LENGTH_SHORT).show();
             finish();
@@ -42,8 +44,9 @@ public class BlueTooth extends AppCompatActivity {
                 connect.setText("Connected to " + name);
 
                 soundeffect.start();
-                Intent intent = new Intent(BlueTooth.this, MainActivity.class);
-                startActivity(intent);
+
+                Intent i = new Intent(BlueTooth.this, MainActivity.class);
+                startActivity(i);
             }
 
             public void onDeviceDisconnected() {
@@ -67,7 +70,6 @@ public class BlueTooth extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void onStart() {
@@ -81,7 +83,6 @@ public class BlueTooth extends AppCompatActivity {
             }
         }
     }
-
 
     public void onDestroy() {
         super.onDestroy();
@@ -102,6 +103,10 @@ public class BlueTooth extends AppCompatActivity {
                 finish();
             }
         }
+    }
+
+    public void driveForward(){
+        bluetooth.send("1", true);
     }
 
 }

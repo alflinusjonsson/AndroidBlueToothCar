@@ -1,6 +1,5 @@
 package se.j.androidprojekt;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,19 +7,24 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Serializable {
+
+
     RadarView mRadarView = null;
     int speedOutput = 50;
     int distanceFront = 20;
     int distanceBack = 20;
-    BlueTooth bt;
+    //BlueTooth bt;
     final String stop = "0";
     final String forward = "1";
     final String left = "3";
     final String right = "4";
     final String back = "2";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         printDisDotBack(distanceBack);
         printDisDotFront(distanceFront);
 
+
         mRadarView = (RadarView) findViewById(R.id.radarView);
 
         mRadarView.setShowCircles(true);
         if (mRadarView != null) mRadarView.startAnimation();
-
     }
 
     public void SettingsButtonClicked(View view){
@@ -56,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-
-                        bt.bluetooth.send(forward,true);
+                        Intent intent = new Intent(MainActivity.this, BlueTooth.class);
+                        intent.putExtra("DIRECTION", 1);
+                        startActivity(intent);
+                        System.out.println("TRYCKT");
                         break;
                     case MotionEvent.ACTION_UP:
-                        bt.bluetooth.send(stop,true);
+                        //bt.send(stop,true);
                         break;
                 }
                 return false;
@@ -74,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        bt.bluetooth.send(left,true);
+
                         break;
                     case MotionEvent.ACTION_UP:
-                        bt.bluetooth.send(stop,true);
+                        //bt.send(stop,true);
                         break;
                 }
                 return false;
@@ -91,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        bt.bluetooth.send(right,true);
+                        //bt.send(right,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        bt.bluetooth.send(stop,true);
+                        //bt.send(stop,true);
                         break;
                 }
                 return false;
@@ -108,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        bt.bluetooth.send(back,true);
+                        //bt.send(back,true);
                         break;
                     case MotionEvent.ACTION_UP:
-                        bt.bluetooth.send(stop,true);
+                        //bt.send(stop,true);
                         break;
                 }
                 return false;
