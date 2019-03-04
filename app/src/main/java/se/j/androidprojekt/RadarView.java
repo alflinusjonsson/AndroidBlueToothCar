@@ -46,7 +46,6 @@ public class RadarView extends View {
         }
     }
 
-
     android.os.Handler mHandler = new android.os.Handler();
     Runnable mTick = new Runnable() {
         @Override

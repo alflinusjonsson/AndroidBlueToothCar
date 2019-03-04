@@ -30,10 +30,10 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
         Intent intent = getIntent();
         String direction = intent.getStringExtra("DIRECTION");
         if (!bluetooth.isBluetoothAvailable()) {
+
             Toast.makeText(getApplicationContext(), "Bluetooth is not available", Toast.LENGTH_SHORT).show();
             finish();
         }
-
 
             bluetooth.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() {
                 public void onDeviceConnected(String name, String address) {

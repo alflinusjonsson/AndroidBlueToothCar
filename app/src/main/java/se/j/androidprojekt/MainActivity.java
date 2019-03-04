@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         disBack.setText(distanceBack + "\n" + "cm");
 
 
-
-
-
         mRadarView = (RadarView) findViewById(R.id.radarView);
 
         mRadarView.setShowCircles(true);
@@ -177,8 +174,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 TextView disFront = (TextView) findViewById(R.id.disFront);
                 disFront.setText(distanceFront + "\n" + "cm");
                 printDisDotFront(distanceFront);
-
-
 
             }
         });
