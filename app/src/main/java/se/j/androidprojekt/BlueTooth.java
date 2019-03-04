@@ -17,60 +17,56 @@ import app.akexorcist.bluetotohspp.library.DeviceList;
 
 public class BlueTooth extends AppCompatActivity implements Serializable {
 
-    BluetoothSPP bluetooth  = new BluetoothSPP(this);
+    BluetoothSPP bluetooth;
     Button connect;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bluetooth = new BluetoothSPP(this);
         setContentView(R.layout.bluetooth);
-
-        //bluetooth = new BluetoothSPP(this);
-
         connect = findViewById(R.id.connect);
-
         final MediaPlayer soundeffect = MediaPlayer.create(this, R.raw.bluetoothsound);
         Intent intent = getIntent();
-        int direction = intent.getIntExtra("DIRECTION", 0);
-        if(bluetooth.isBluetoothEnabled() && direction == 1)
-            bluetooth.send("1", true);
+        String direction = intent.getStringExtra("DIRECTION");
         if (!bluetooth.isBluetoothAvailable()) {
             Toast.makeText(getApplicationContext(), "Bluetooth is not available", Toast.LENGTH_SHORT).show();
             finish();
         }
 
-        bluetooth.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() {
-            public void onDeviceConnected(String name, String address) {
-                connect.setText("Connected to " + name);
 
-                soundeffect.start();
+            bluetooth.setBluetoothConnectionListener(new BluetoothSPP.BluetoothConnectionListener() {
+                public void onDeviceConnected(String name, String address) {
+                    connect.setText("Connected to " + name);
 
-                Intent i = new Intent(BlueTooth.this, MainActivity.class);
-                startActivity(i);
-            }
+                    soundeffect.start();
+                    final Bundle bundle = new Bundle();
+                    bundle.putBinder("object_value", new ObjectWrapperForBinder(bluetooth));
+                    startActivity(new Intent(BlueTooth.this, MainActivity.class).putExtras(bundle));
 
-            public void onDeviceDisconnected() {
-                connect.setText("Connection lost");
-            }
-
-            public void onDeviceConnectionFailed() {
-                connect.setText("Unable to connect");
-            }
-        });
-
-        connect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (bluetooth.getServiceState() == BluetoothState.STATE_CONNECTED) {
-                    bluetooth.disconnect();
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), DeviceList.class);
-                    startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);
                 }
-            }
-        });
 
-    }
+                public void onDeviceDisconnected() {
+                    connect.setText("Connection lost");
+                }
+
+                public void onDeviceConnectionFailed() {
+                    connect.setText("Unable to connect");
+                }
+            });
+
+            connect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bluetooth.getServiceState() == BluetoothState.STATE_CONNECTED) {
+                        bluetooth.disconnect();
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), DeviceList.class);
+                        startActivityForResult(intent, BluetoothState.REQUEST_CONNECT_DEVICE);
+                    }
+                }
+            });
+        }
 
     public void onStart() {
         super.onStart();

@@ -1,5 +1,6 @@
 package se.j.androidprojekt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,13 +19,13 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     int speedOutput = 50;
     int distanceFront = 20;
     int distanceBack = 20;
-    //BlueTooth bt;
+    BluetoothSPP bt;
     final String stop = "0";
     final String forward = "1";
     final String left = "3";
     final String right = "4";
     final String back = "2";
-
+    boolean onTouch = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +59,15 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        Intent intent = new Intent(MainActivity.this, BlueTooth.class);
-                        intent.putExtra("DIRECTION", 1);
-                        startActivity(intent);
-                        System.out.println("TRYCKT");
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        //bt.send(stop,true);
-                        break;
+                switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    onTouch = true;
+                    drive("1");
+                    break;
+
+                case MotionEvent.ACTION_UP:
+                    onTouch = false;
+                    break;
                 }
                 return false;
             }
@@ -75,15 +75,17 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     public void ArrowLeftPressed(View view) {
+
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-
+                        onTouch = true;
+                        drive("3");
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.send(stop,true);
+                        onTouch = false;
                         break;
                 }
                 return false;
@@ -97,10 +99,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //bt.send(right,true);
+                        onTouch = true;
+                        drive("4");
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.send(stop,true);
+                        onTouch = false;
                         break;
                 }
                 return false;
@@ -114,10 +117,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        //bt.send(back,true);
+                        onTouch = true;
+                        drive("2");
                         break;
                     case MotionEvent.ACTION_UP:
-                        //bt.send(stop,true);
+                        onTouch = false;
                         break;
                 }
                 return false;
@@ -153,6 +157,25 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         else
             distanceDot.setBackgroundColor(6334512);
     }
+
+    public void drive(String direction){
+        bt = ((ObjectWrapperForBinder) getIntent().getExtras().getBinder("object_value")).getData();
+        if(onTouch){
+            bt.send(direction, true);
+        }
+        else
+            bt.send("0", false);
+    }
+
+    public void receiveData(){
+        bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
+            @Override
+            public void onDataReceived(byte[] data, String message) {
+                String receivedMessage = message;
+            }
+        });
+    }
+
 }
 
 
