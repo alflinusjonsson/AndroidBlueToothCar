@@ -1,6 +1,5 @@
 package se.j.androidprojekt;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,18 +13,11 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
 
-
     RadarView mRadarView = null;
-    int speedOutput = 50;
-    int distanceFront = 20;
-    int distanceBack = 20;
+    int speedOutput = 0;
+    int distanceFront = 0;
+    int distanceBack = 0;
     BluetoothSPP bt;
-    final String stop = "0";
-    final String forward = "1";
-    final String left = "3";
-    final String right = "4";
-    final String back = "2";
-    boolean onTouch = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         TextView disBack = (TextView) findViewById(R.id.disBack);
         disBack.setText(distanceBack + "\n" + "cm");
 
-        printDisDotBack(distanceBack);
-        printDisDotFront(distanceFront);
+
+
 
 
         mRadarView = (RadarView) findViewById(R.id.radarView);
@@ -61,12 +53,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
-                    onTouch = true;
-                    drive("1");
+                    drive("F");
                     break;
 
                 case MotionEvent.ACTION_UP:
-                    onTouch = false;
+                    drive("S");
+                    System.out.println("/n 'S'");
                     break;
                 }
                 return false;
@@ -81,11 +73,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        onTouch = true;
-                        drive("3");
+                        drive("L");
                         break;
                     case MotionEvent.ACTION_UP:
-                        onTouch = false;
+                        drive("S");
                         break;
                 }
                 return false;
@@ -99,11 +90,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        onTouch = true;
-                        drive("4");
+                        drive("R");
                         break;
                     case MotionEvent.ACTION_UP:
-                        onTouch = false;
+                        drive("S");
                         break;
                 }
                 return false;
@@ -117,11 +107,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        onTouch = true;
-                        drive("2");
+                        drive("B");
                         break;
                     case MotionEvent.ACTION_UP:
-                        onTouch = false;
+                        drive("S");
                         break;
                 }
                 return false;
@@ -160,18 +149,37 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     public void drive(String direction){
         bt = ((ObjectWrapperForBinder) getIntent().getExtras().getBinder("object_value")).getData();
-        if(onTouch){
-            bt.send(direction, true);
-        }
-        else
-            bt.send("0", false);
+        bt.send(direction, true);
+        receiveData();
     }
 
     public void receiveData(){
         bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
             @Override
             public void onDataReceived(byte[] data, String message) {
-                String receivedMessage = message;
+                String mes = message;
+                String[] cut = mes.split(",");
+                System.out.println(cut[0]);
+                int[] intArray = new int[cut.length];
+                for(int i = 0; i<cut.length; i++) {
+                    String numberAsString = cut[i];
+                    intArray[i] = Integer.parseInt(numberAsString);
+                }
+
+
+                distanceBack = intArray[0];
+                distanceFront = intArray[1];
+
+                TextView disBack = (TextView) findViewById(R.id.disBack);
+                disBack.setText(distanceBack + "\n" + "cm");
+                printDisDotBack(distanceBack);
+
+                TextView disFront = (TextView) findViewById(R.id.disFront);
+                disFront.setText(distanceFront + "\n" + "cm");
+                printDisDotFront(distanceFront);
+
+
+
             }
         });
     }
