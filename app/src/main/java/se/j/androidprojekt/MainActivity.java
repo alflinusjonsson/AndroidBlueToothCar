@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     int distanceBack = 0;
     BluetoothSPP bt;
 
-    final MediaPlayer closeObjectSound = MediaPlayer.create(this, R.raw.beeping);
+    //final MediaPlayer closeObjectSound = MediaPlayer.create(this, R.raw.beeping);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                     intArray[i] = Integer.parseInt(numberAsString);
                 }
 
-
                 distanceBack = intArray[0];
                 distanceFront = intArray[1];
 
@@ -185,9 +184,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 else
                     speedOutput = 6;
                 TextView speedTextView = (TextView) findViewById(R.id.speed);
-                speedTextView.setText(speedOutput + "\n" + "km/h")
-
-
+                speedTextView.setText(speedOutput + "\n" + "km/h");
 
             }
         });
