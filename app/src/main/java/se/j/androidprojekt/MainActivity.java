@@ -1,6 +1,7 @@
 package se.j.androidprojekt;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -18,6 +19,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     int distanceFront = 0;
     int distanceBack = 0;
     BluetoothSPP bt;
+
+    final MediaPlayer closeObjectSound = MediaPlayer.create(this, R.raw.beeping);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,6 +178,15 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 TextView disFront = (TextView) findViewById(R.id.disFront);
                 disFront.setText(distanceFront + "\n" + "cm");
                 printDisDotFront(distanceFront);
+
+                if (distanceBack < 20){
+                    closeObjectSound.start();
+                }
+
+                if (distanceFront < 20) {
+                    closeObjectSound.start();
+                }
+
 
             }
         });
