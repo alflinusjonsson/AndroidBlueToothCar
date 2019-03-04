@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        TextView speedTextView = (TextView) findViewById(R.id.speed);
+        /*TextView speedTextView = (TextView) findViewById(R.id.speed);
         speedTextView.setText(speedOutput + "\n" + "km/h");
 
         TextView disFront = (TextView) findViewById(R.id.disFront);
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
         TextView disBack = (TextView) findViewById(R.id.disBack);
         disBack.setText(distanceBack + "\n" + "cm");
-
+        */
 
         mRadarView = (RadarView) findViewById(R.id.radarView);
 
@@ -147,10 +147,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     public void drive(String direction){
         bt = ((ObjectWrapperForBinder) getIntent().getExtras().getBinder("object_value")).getData();
         bt.send(direction, true);
-        receiveData();
+        receiveData(direction);
     }
 
-    public void receiveData(){
+    public void receiveData(final String direction){
         bt.setOnDataReceivedListener(new BluetoothSPP.OnDataReceivedListener() {
             @Override
             public void onDataReceived(byte[] data, String message) {
@@ -174,6 +174,13 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 TextView disFront = (TextView) findViewById(R.id.disFront);
                 disFront.setText(distanceFront + "\n" + "cm");
                 printDisDotFront(distanceFront);
+
+                if(direction == "S")
+                    speedOutput = 0;
+                else
+                    speedOutput = 6;
+                TextView speedTextView = (TextView) findViewById(R.id.speed);
+                speedTextView.setText(speedOutput + "\n" + "km/h");
 
             }
         });
