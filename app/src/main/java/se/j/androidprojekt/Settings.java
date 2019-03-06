@@ -30,5 +30,6 @@ public class Settings extends AppCompatActivity {
         Intent intent = new Intent(this, LogManagement.class);
         startActivity(intent);
     }
+
 }
 

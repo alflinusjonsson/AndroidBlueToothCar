@@ -8,6 +8,7 @@ package se.j.androidprojekt;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,19 +27,24 @@ public class LogManagement extends AppCompatActivity {
                 BufferedReader bufferedReader = new BufferedReader(
                         new InputStreamReader(process.getInputStream()));
 
-                StringBuilder log=new StringBuilder();
+                StringBuilder log = new StringBuilder();
                 String line = "";
                 while ((line = bufferedReader.readLine()) != null) {
                     log.append(line);
                 }
-                TextView tv = (TextView)findViewById(R.id.textView);
+
+                TextView tv = new TextView(this);
                 tv.setText(log.toString());
+
+                ScrollView sv = (ScrollView)findViewById(R.id.scrollV);
+
+                sv.addView(tv);
+
             } catch (IOException e) {
                 // Handle Exception
             }
         }
 
 }
-
 
 
