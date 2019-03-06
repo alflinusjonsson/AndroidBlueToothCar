@@ -190,6 +190,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
                 TextView speedTextView = (TextView) findViewById(R.id.speed);
                 speedTextView.setText(speedOutput + "\n" + "km/h");
 
+
             }
         });
     }
