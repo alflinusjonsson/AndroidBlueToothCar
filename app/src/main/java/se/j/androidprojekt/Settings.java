@@ -1,3 +1,10 @@
+/*
+ * Settings class
+ * Used for printing and handling gui of the settings page
+ * 2019-03-06 Version 1.0
+ */
+
+
 package se.j.androidprojekt;
 
 import android.support.v7.app.AppCompatActivity;
