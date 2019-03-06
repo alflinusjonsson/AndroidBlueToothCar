@@ -19,5 +19,9 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void logButtonClicked(View view){
+        Intent intent = new Intent(this, LogManagement.class);
+        startActivity(intent);
+    }
 }
 
