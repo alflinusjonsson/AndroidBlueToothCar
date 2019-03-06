@@ -6,4 +6,5 @@
     <string name = "turn_on">Sätt på</string>
     <string name = "paired_devices">Parade enheter</string>
     <string name = "button1">Bluetooth Inställningar</string>
+    <string name="button">Visa log</string>
 </resources>

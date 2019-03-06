@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import java.io.Serializable;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
@@ -104,5 +103,4 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
     public void driveForward(){
         bluetooth.send("1", true);
     }
-
 }
