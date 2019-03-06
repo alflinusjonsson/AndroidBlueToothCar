@@ -1,3 +1,9 @@
+/*
+ * Android application for Arduino and bluetooth controlled car
+ * Created by Linus Jönsson, Anton Karlsson, Oscar Schenstöm
+ * 2019-03-06 Version 1.0
+ */
+
 package se.j.androidprojekt;
 
 import android.content.Intent;
@@ -7,9 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-
 import java.io.Serializable;
-
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 
 public class MainActivity extends AppCompatActivity implements Serializable {

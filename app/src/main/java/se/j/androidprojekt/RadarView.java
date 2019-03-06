@@ -1,3 +1,9 @@
+/*
+ * RadarView class
+ * Displays information from ultrasonic sensors placed on the arduino car, printed out as a radar.
+ * 2019-03-06 Version 1.0
+ */
+
 package se.j.androidprojekt;
 
 import android.view.View;

@@ -1,6 +1,11 @@
+/*
+ * LogManagement class
+ * Used for log control, prints out log in application. Can be used for debugging and general information
+ * 2019-03-06 Version 1.0
+ */
+
 package se.j.androidprojekt;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -11,7 +16,6 @@ import java.io.InputStreamReader;
 
 public class LogManagement extends AppCompatActivity {
 
-    class ReadLogDemo extends Activity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -34,8 +38,7 @@ public class LogManagement extends AppCompatActivity {
             }
         }
 
-    }
-
-
-
 }
+
+
+

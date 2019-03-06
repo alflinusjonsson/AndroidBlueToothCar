@@ -1,3 +1,9 @@
+/*
+ * BlueTooth class
+ * Used for setting up and maintain bluetooth connection to a device. Based on the BluetoothSPP library.
+ * 2019-03-06 Version 1.0
+ */
+
 package se.j.androidprojekt;
 
 import android.app.Activity;
@@ -22,12 +28,16 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         bluetooth = new BluetoothSPP(this);
         setContentView(R.layout.bluetooth);
         connect = findViewById(R.id.connect);
+
         final MediaPlayer soundeffect = MediaPlayer.create(this, R.raw.bluetoothsound);
+
         Intent intent = getIntent();
         String direction = intent.getStringExtra("DIRECTION");
+
         if (!bluetooth.isBluetoothAvailable()) {
 
             Toast.makeText(getApplicationContext(), "Bluetooth is not available", Toast.LENGTH_SHORT).show();
@@ -67,6 +77,7 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
             });
         }
 
+    //Checks is bluetooth is enable and starts the service
     public void onStart() {
         super.onStart();
         if (!bluetooth.isBluetoothEnabled()) {
@@ -79,11 +90,13 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
         }
     }
 
+    //Destroys bluetooth object
     public void onDestroy() {
         super.onDestroy();
         bluetooth.stopService();
     }
 
+    //Connecting to device if available else prints out error message to user
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == BluetoothState.REQUEST_CONNECT_DEVICE) {
             if (resultCode == Activity.RESULT_OK)
