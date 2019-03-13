@@ -123,7 +123,6 @@ public class RadarView extends View {
             }
         }
 
-
         lines = 0;
         for (Point p : latestPoint) if (p != null) lines++;
 
