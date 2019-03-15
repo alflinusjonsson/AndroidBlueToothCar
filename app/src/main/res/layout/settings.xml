@@ -2,22 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@android:color/darker_gray">
 
     <Button
         android:id="@+id/button6"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/settingsbutton"
         android:onClick="bluetoothButtonClicked"
-        android:text="@string/button1" />
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/button1"
+        android:textColor="@color/SettingsColor"
+        android:textSize="20dp"/>
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/settingsbutton"
         android:onClick="logButtonClicked"
-        android:text="@string/button" />
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/button"
+        android:textColor="@color/SettingsColor"
+        android:textSize="20dp"/>
+
 
 </LinearLayout>

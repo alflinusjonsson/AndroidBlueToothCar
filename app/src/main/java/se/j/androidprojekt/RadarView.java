@@ -67,13 +67,6 @@ public class RadarView extends View {
         mHandler.post(mTick);
     }
 
-    public void stopAnimation() {
-        mHandler.removeCallbacks(mTick);
-    }
-
-    public void setFrameRate(int fps) { this.fps = fps; }
-    public int getFrameRate() { return this.fps; }
-
     public void setShowCircles(boolean showCircles) { this.showCircles =     showCircles; }
 
     @Override
@@ -85,9 +78,6 @@ public class RadarView extends View {
         int height = getHeight();
 
         int r = Math.min(width, height);
-
-
-        //canvas.drawRect(0, 0, getWidth(), getHeight(), localPaint);
 
         int i = r / 2;
         int j = i - 1;
@@ -113,8 +103,6 @@ public class RadarView extends View {
             latestPoint[x] = latestPoint[x-1];
         }
 
-
-
         int lines = 0;
         for (int x = 0; x < POINT_ARRAY_SIZE; x++) {
             Point point = latestPoint[x];
@@ -132,12 +120,6 @@ public class RadarView extends View {
             for (Point p : latestPoint) {
                 if (p != null) sb.append(" (" + p.x + "x" + p.y + ")");
             }
-
-            Log.d(LOG, sb.toString());
-            //  " - R:" + r + ", i=" + i +
-            //  " - Size: " + width + "x" + height +
-            //  " - Angle: " + angle +
-            //  " - Offset: " + offsetX + "," + offsetY);
         }
 
     }

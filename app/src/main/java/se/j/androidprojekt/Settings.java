@@ -4,9 +4,9 @@
  * 2019-03-06 Version 1.0
  */
 
-
 package se.j.androidprojekt;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     public void bluetoothButtonClicked(View view){
@@ -28,6 +29,10 @@ public class Settings extends AppCompatActivity {
 
     public void logButtonClicked(View view){
         Intent intent = new Intent(this, LogManagement.class);
+        startActivity(intent);
+    }
+    public void driveOnClick(View view){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

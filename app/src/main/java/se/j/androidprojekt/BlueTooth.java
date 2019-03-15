@@ -8,6 +8,7 @@ package se.j.androidprojekt;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         bluetooth = new BluetoothSPP(this);
         setContentView(R.layout.bluetooth);
         connect = findViewById(R.id.connect);

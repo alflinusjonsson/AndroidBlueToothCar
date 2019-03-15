@@ -8,43 +8,25 @@ package se.j.androidprojekt;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ScrollView;
-import android.widget.TextView;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class LogManagement extends AppCompatActivity {
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.log_management);
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-            try {
-                Process process = Runtime.getRuntime().exec("logcat -d");
-                BufferedReader bufferedReader = new BufferedReader(
-                        new InputStreamReader(process.getInputStream()));
+        setContentView(R.layout.log_management);
 
-                StringBuilder log = new StringBuilder();
-                String line = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    log.append(line);
-                }
+        final ListView listView = (ListView) findViewById(R.id.listView);
+        listView.setAdapter(new ArrayAdapter<Data.logList>(
+                this,
+                android.R.layout.simple_list_item_1,
+                Data.log
+        ));
 
-                TextView tv = new TextView(this);
-                tv.setText(log.toString());
-
-                ScrollView sv = (ScrollView)findViewById(R.id.scrollV);
-
-                sv.addView(tv);
-
-            } catch (IOException e) {
-                // Handle Exception
-            }
-        }
-
+    }
 }
-
-

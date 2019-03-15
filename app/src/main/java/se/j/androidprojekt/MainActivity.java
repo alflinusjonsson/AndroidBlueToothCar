@@ -7,7 +7,8 @@
 package se.j.androidprojekt;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -19,27 +20,16 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 public class MainActivity extends AppCompatActivity implements Serializable {
 
     RadarView mRadarView = null;
-    int speedOutput = 0;
-    int distanceFront = 0;
-    int distanceBack = 0;
+    int speedOutput;
+    int distanceFront;
+    int distanceBack;
     BluetoothSPP bt;
-
-    //final MediaPlayer closeObjectSound = MediaPlayer.create(this, R.raw.beeping);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
-        /*TextView speedTextView = (TextView) findViewById(R.id.speed);
-        speedTextView.setText(speedOutput + "\n" + "km/h");
-
-        TextView disFront = (TextView) findViewById(R.id.disFront);
-        disFront.setText(distanceFront + "\n" + "cm");
-
-        TextView disBack = (TextView) findViewById(R.id.disBack);
-        disBack.setText(distanceBack + "\n" + "cm");
-        */
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         mRadarView = (RadarView) findViewById(R.id.radarView);
 
@@ -52,10 +42,22 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         startActivity(intent);
     }
 
+    public void driveOnClick(View view){
+
+            for(int i = 0; i<Data.log.size(); i++){
+                Data.logList currentTask = Data.log.get(i);
+                String todo = currentTask.toString();
+                drive(todo);
+            }
+
+            drive("S");
+    }
+
     public void ArrowUpPressed(View view) {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Data.log.add(new Data.logList("F"));
                 switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
                     drive("F");
@@ -63,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
                 case MotionEvent.ACTION_UP:
                     drive("S");
-                    System.out.println("/n 'S'");
                     break;
                 }
                 return false;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Data.log.add(new Data.logList("L"));
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         drive("L");
@@ -93,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Data.log.add(new Data.logList("R"));
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         drive("R");
@@ -110,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                Data.log.add(new Data.logList("B"));
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         drive("B");
@@ -125,31 +129,49 @@ public class MainActivity extends AppCompatActivity implements Serializable {
 
     public void printDisDotBack(int distance){
         TextView distanceDot = (TextView)findViewById(R.id.disDotBack);
-        if(distance < 5)
-            distanceDot.setY(-610);
-        else if(distance < 10)
-            distanceDot.setY(-540);
-        else if(distance < 14)
-            distanceDot.setY(-460);
-        else if(distance < 17)
-            distanceDot.setY(-380);
-        else
-            distanceDot.setBackgroundColor(6334512);
+        if(distance < 15){
+            distanceDot.setY(500);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance < 30){
+            distanceDot.setY(600);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance < 50){
+            distanceDot.setY(700);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance < 100){
+            distanceDot.setY(800);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance==0 || distance > 100){
+           distanceDot.setBackgroundColor(6334512);
+        }
 
     }
 
     public void printDisDotFront(int distance){
         TextView distanceDot = (TextView)findViewById(R.id.disDotFront);
-        if(distance < 5)
-            distanceDot.setY(-680);
-        else if(distance < 10)
-            distanceDot.setY(-750);
-        else if(distance < 14)
-            distanceDot.setY(-830);
-        else if(distance < 17)
-            distanceDot.setY(-910);
-        else
+        if(distance < 15){
+            distanceDot.setY(380);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance < 30){
+            distanceDot.setY(265);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance < 50){
+            distanceDot.setY(200);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance < 100){
+            distanceDot.setY(50);
+            distanceDot.setBackgroundColor(Color.BLACK);
+        }
+        else if(distance == 0 || distance > 100){
             distanceDot.setBackgroundColor(6334512);
+        }
     }
 
     public void drive(String direction){
