@@ -19,15 +19,15 @@
         </intent-filter>
     </activity>
 
-        <activity android:name=".BlueTooth">
+        <activity android:name=".BlueToothActivity">
 
         </activity>
 
-        <activity android:name=".Settings">
+        <activity android:name=".SettingsActivity">
 
         </activity>
 
-        <activity android:name=".LogManagement">
+        <activity android:name=".LogManagementActivity">
 
         </activity>
 

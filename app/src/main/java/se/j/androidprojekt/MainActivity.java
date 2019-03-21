@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     }
 
     public void SettingsButtonClicked(View view){
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 

@@ -1,5 +1,5 @@
 /*
- * LogManagement class
+ * LogManagementActivity class
  * Used for log control, prints out log in application. Can be used for debugging and general information
  * 2019-03-06 Version 1.0
  */
@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class LogManagement extends AppCompatActivity {
+public class LogManagementActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -1,5 +1,5 @@
 /*
- * BlueTooth class
+ * BlueToothActivity class
  * Used for setting up and maintain bluetooth connection to a device. Based on the BluetoothSPP library.
  * 2019-03-06 Version 1.0
  */
@@ -21,7 +21,7 @@ import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
 import app.akexorcist.bluetotohspp.library.DeviceList;
 
-public class BlueTooth extends AppCompatActivity implements Serializable {
+public class BlueToothActivity extends AppCompatActivity implements Serializable {
 
     BluetoothSPP bluetooth;
     Button connect;
@@ -52,7 +52,7 @@ public class BlueTooth extends AppCompatActivity implements Serializable {
                     soundeffect.start();
                     final Bundle bundle = new Bundle();
                     bundle.putBinder("object_value", new ObjectWrapperForBinder(bluetooth));
-                    startActivity(new Intent(BlueTooth.this, MainActivity.class).putExtras(bundle));
+                    startActivity(new Intent(BlueToothActivity.this, MainActivity.class).putExtras(bundle));
 
                 }
 

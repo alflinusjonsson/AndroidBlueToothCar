@@ -1,5 +1,5 @@
 /*
- * Settings class
+ * SettingsActivity class
  * Used for printing and handling gui of the settings page
  * 2019-03-06 Version 1.0
  */
@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,12 +23,12 @@ public class Settings extends AppCompatActivity {
     }
 
     public void bluetoothButtonClicked(View view){
-        Intent intent = new Intent(this, BlueTooth.class);
+        Intent intent = new Intent(this, BlueToothActivity.class);
         startActivity(intent);
     }
 
     public void logButtonClicked(View view){
-        Intent intent = new Intent(this, LogManagement.class);
+        Intent intent = new Intent(this, LogManagementActivity.class);
         startActivity(intent);
     }
     public void driveOnClick(View view){
