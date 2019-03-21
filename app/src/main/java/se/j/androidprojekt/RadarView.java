@@ -13,11 +13,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
 
 public class RadarView extends View {
 
-    private final String LOG = "RadarView";
     private final int POINT_ARRAY_SIZE = 25;
 
     private int fps = 100;
@@ -81,7 +79,7 @@ public class RadarView extends View {
 
         int i = r / 2;
         int j = i - 1;
-        Paint localPaint = latestPaint[0]; // GREEN
+        Paint localPaint = latestPaint[0];
 
         if (showCircles) {
             canvas.drawCircle(i, i, j, localPaint);

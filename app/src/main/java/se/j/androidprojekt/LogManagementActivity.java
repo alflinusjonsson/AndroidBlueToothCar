@@ -1,5 +1,5 @@
 /*
- * LogManagementActivity class
+ * LogManagement Activity
  * Used for log control, prints out log in application. Can be used for debugging and general information
  * 2019-03-06 Version 1.0
  */

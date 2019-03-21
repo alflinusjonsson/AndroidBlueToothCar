@@ -1,5 +1,5 @@
 /*
- * BlueToothActivity class
+ * BlueTooth Activity
  * Used for setting up and maintain bluetooth connection to a device. Based on the BluetoothSPP library.
  * 2019-03-06 Version 1.0
  */

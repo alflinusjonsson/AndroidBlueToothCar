@@ -1,4 +1,5 @@
 /*
+ * Main Activity
  * Android application for Arduino and bluetooth controlled car
  * Created by Linus Jönsson, Anton Karlsson, Oscar Schenstöm
  * 2019-03-06 Version 1.0

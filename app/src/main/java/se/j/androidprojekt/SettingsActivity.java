@@ -1,5 +1,5 @@
 /*
- * SettingsActivity class
+ * Settings Activity
  * Used for printing and handling gui of the settings page
  * 2019-03-06 Version 1.0
  */
